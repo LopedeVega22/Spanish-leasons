@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Práctica: verbos regulares y marcas de tiempo</title>
+<style>
+:root{color-scheme:light;--bg:#f6f3ec;--card:#fff;--tx:#1e2a3a;--mut:#6b7686;--ln:#e4dfd3;--ok:#1f7a45;--no:#b03a2e;--ac:#1f7a6d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font-family:Georgia,'Times New Roman',serif}
+.wrap{max-width:640px;margin:0 auto;padding:18px 16px 40px}
+.hero{background:#1e2a3a;color:#fff;border-radius:16px;padding:20px 22px}
+h1{margin:0 0 4px;font-size:clamp(24px,6vw,34px)}
+.hero p{margin:0;color:#c3cddb;font-size:15px}
+.tabs{display:flex;gap:6px;margin-top:14px}
+.tabs button{flex:1;background:var(--card);color:var(--tx);border:1px solid var(--ln);padding:9px 4px;font-size:13px}
+.tabs button.on{background:#1e2a3a;color:#fff;border-color:#1e2a3a}
+.top{display:flex;justify-content:space-between;font:14px system-ui,sans-serif;color:var(--mut);margin-top:14px}
+.top b{color:var(--tx)}
+.pg{height:6px;background:var(--ln);border-radius:3px;margin-top:6px;overflow:hidden}
+.pg i{display:block;height:100%;width:0;background:#1e2a3a;transition:width .3s}
+.nv{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.nv button{margin-top:0}
+.gp{display:none;background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:12px;margin-top:10px}
+.gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px}
+.gb{margin:0!important;padding:8px 0!important;font-size:13px!important;background:#fff;color:var(--tx);border:1px solid var(--ln);border-radius:6px!important}
+.gb.ok{background:#dff1e6}.gb.no{background:#f8dedb}.gb.cur{outline:2px solid #1e2a3a;font-weight:bold}
+.lgd{font:12px system-ui,sans-serif;color:var(--mut);margin-top:10px}
+.card{background:var(--card);border:1px solid var(--ln);border-top:6px solid var(--ac);border-radius:14px;padding:22px 20px;margin-top:14px;box-shadow:0 2px 6px rgba(30,42,58,.08)}
+.chip{font:13px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.07em;color:var(--ac)}
+.s{font-size:clamp(20px,5vw,25px);line-height:1.9;margin:12px 0 6px}
+.hint{font:14px system-ui,sans-serif;color:var(--mut)}.hint b{color:var(--tx);font-size:16px}
+input{font:inherit;font-size:21px;width:7.5em;max-width:60vw;text-align:center;border:0;border-bottom:3px solid var(--mut);border-radius:6px 6px 0 0;padding:2px 6px;background:var(--bg);color:var(--tx);outline:none}
+input:focus{border-bottom-color:#1e2a3a;background:#fff}
+input.ok{border-bottom-color:var(--ok);color:var(--ok);font-weight:bold}
+input.no{border-bottom-color:var(--no);color:var(--no);text-decoration:line-through}
+button{font:15px system-ui,sans-serif;background:#1e2a3a;color:#fff;border:0;border-radius:10px;padding:11px 20px;cursor:pointer;margin-top:14px}
+button.g{background:transparent;color:var(--mut);border:1px solid var(--ln)}
+.ops{display:grid;gap:8px;margin-top:10px}
+.op{margin:0;text-align:left;background:var(--bg);color:var(--tx);border:2px solid var(--ln);font-size:16px}
+.op.good{border-color:var(--ok);background:#dff1e6}.op.bad{border-color:var(--no);background:#f8dedb}
+.fb{font:16px system-ui,sans-serif;margin-top:12px;min-height:22px;line-height:1.5}
+.fb.g{color:var(--ok)}.fb.r{color:var(--no)}
+table{width:100%;border-collapse:collapse;font:14px system-ui,sans-serif;margin-top:10px}
+.big{font-size:44px;font-weight:bold;text-align:center}
+.err{max-height:280px;overflow-y:auto;font:14px system-ui,sans-serif;margin:10px 0}
+.err div{padding:7px 0;border-bottom:1px solid var(--ln);line-height:1.5}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero"><h1>Práctica: regulares y marcas de tiempo</h1><p>La marca de tiempo te dice qué tiempo verbal usar.</p></div>
+<div class="tabs"><button id="m0" class="on">Conjuga</button><button id="m1">Elige la marca</button><button id="m2">Marca → tiempo</button></div>
+<div class="top"><span id="pn"></span><span id="sc"></span></div>
+<div class="pg"><i id="pb"></i></div>
+<div class="nv"><button class="g" id="bp">←</button><button id="bg">Ir a la ▾</button><button class="g" id="bn">→</button><button class="g" id="br">Resultados</button></div>
+<div class="gp" id="gp"></div>
+<div class="card" id="card"></div>
+</div>
+<script>
+var L="abrir aprender beber buscar caminar cerrar cocinar comenzar comer conocer creer dar decir encontrar entender escribir estar haber hablar hacer ir jugar leer llamar llegar mirar necesitar pagar pedir pensar poder poner preferir quedar querer saber salir sentarse sentir ser tener tomar trabajar traer usar venir ver viajar vivir volver".split(" ");
+var EN="to open|to learn|to drink|to look for|to walk|to close|to cook|to begin|to eat|to know (a person or place)|to believe|to give|to say / to tell|to find|to understand|to write|to be (state / location)|to have (auxiliary) / there is|to speak|to do / to make|to go|to play|to read|to call|to arrive|to look at|to need|to pay|to ask for / to order|to think|can / to be able to|to put|to prefer|to stay / to meet up|to want / to love|to know (a fact) / to know how to|to go out / to leave|to sit down|to feel|to be (identity / trait)|to have|to take / to drink|to work|to bring|to use|to come|to see|to travel|to live|to return".split("|");
+var A={abrir:{t:"abierto"},cerrar:{s:"ie"},comenzar:{s:"ie"},conocer:{y:"conozco"},
+dar:{p:"doy,das,da,damos,dais,dan",d:"di,diste,dio,dimos,disteis,dieron"},
+decir:{s:"i",y:"digo",u:"dij",t:"dicho"},encontrar:{s:"ue"},entender:{s:"ie"},escribir:{t:"escrito"},
+estar:{p:"estoy,estás,está,estamos,estáis,están",u:"estuv"},haber:{p:"he,has,ha,hemos,habéis,han",u:"hub"},hacer:{y:"hago",u:"hic",t:"hecho"},
+ir:{p:"voy,vas,va,vamos,vais,van",d:"fui,fuiste,fue,fuimos,fuisteis,fueron",m:"iba,ibas,iba,íbamos,ibais,iban"},
+jugar:{s:"uu"},pedir:{s:"i"},pensar:{s:"ie"},poder:{s:"ue",u:"pud"},poner:{y:"pongo",u:"pus",t:"puesto"},
+preferir:{s:"ie"},querer:{s:"ie",u:"quis"},saber:{y:"sé",u:"sup"},salir:{y:"salgo"},sentarse:{s:"ie"},sentir:{s:"ie"},
+ser:{p:"soy,eres,es,somos,sois,son",d:"fui,fuiste,fue,fuimos,fuisteis,fueron",m:"era,eras,era,éramos,erais,eran"},
+tener:{s:"ie",y:"tengo",u:"tuv"},traer:{y:"traigo",u:"traj"},venir:{s:"ie",y:"vengo",u:"vin"},
+ver:{p:"veo,ves,ve,vemos,veis,ven",d:"vi,viste,vio,vimos,visteis,vieron",m:"veía,veías,veía,veíamos,veíais,veían",t:"visto"},
+volver:{s:"ue",t:"vuelto"}};
+function gen(inf,a,reg){
+if(reg)a={};
+var rf=/se$/.test(inf),b=rf?inf.slice(0,-2):inf,t=b.slice(-2),st=b.slice(0,-2),R=["me","te","se","nos","os","se"];
+var E={ar:["o","as","a","amos","áis","an"],er:["o","es","e","emos","éis","en"],ir:["o","es","e","imos","ís","en"]}[t];
+var P=[],D=[],M=[];
+function sc(s){var k=a.s;
+if(k=="ie")return s.replace(/e([^e]*)$/,"ie$1");
+if(k=="ue")return s.replace(/o([^o]*)$/,"ue$1");
+if(k=="uu")return s.replace(/u([^u]*)$/,"ue$1");
+if(k=="i")return s.replace(/e([^e]*)$/,"i$1");return s}
+if(a.p)P=a.p.split(",");else{for(var i=0;i<6;i++)P[i]=((i<3||i==5)?sc(st):st)+E[i];if(a.y)P[0]=a.y}
+var v=/[aeo]$/.test(st);
+if(a.d)D=a.d.split(",");
+else if(a.u){var j=/j$/.test(a.u);D=["e","iste","o","imos","isteis",j?"eron":"ieron"].map(function(e){return a.u+e});if(inf=="hacer")D[2]="hizo"}
+else if(t=="ar")D=["é","aste","ó","amos","asteis","aron"].map(function(e,i){var s=st;if(i==0&&!reg)s=s.replace(/c$/,"qu").replace(/g$/,"gu").replace(/z$/,"c");return s+e});
+else D=["í","iste","ió","imos","isteis","ieron"].map(function(e,i){var s=st;
+if(a.s&&t=="ir"&&(i==2||i==5)&&!reg)s=s.replace(/e([^e]*)$/,"i$1");
+if(v&&!reg){if(i==2)return s+"yó";if(i==5)return s+"yeron";return s+e.replace("i","í")}
+return s+e});
+if(a.m)M=a.m.split(",");
+else M=(t=="ar"?["aba","abas","aba","ábamos","abais","aban"]:["ía","ías","ía","íamos","íais","ían"]).map(function(e){return st+e});
+var pt=a.t||(st+(t=="ar"?"ado":(v&&!reg?"ído":"ido")));
+var C=["he","has","ha","hemos","habéis","han"].map(function(h){return h+" "+pt});
+var out=[P,D,M,C];
+if(rf)out=out.map(function(c){return c.map(function(f,i){return R[i]+" "+f})});
+return out}
+
+var DA="hablar|1|0|Ayer ___ con mi hermana por teléfono.\nhablar|3|3|Esta mañana ___ con el profesor.\nhablar|0|0|Normalmente ___ en español con mis amigos.\ncomer|1|3|Anoche nosotros ___ en un restaurante italiano.\ncomer|2|0|Antes ___ en casa de mis abuelos todos los domingos.\ncomer|3|5|Hoy ellos ___ muy poco.\nvivir|1|0|Hace cinco años ___ en Valencia.\nvivir|0|0|Ahora ___ en Madrid.\nvivir|2|2|Antes ___ en un pueblo pequeño.\ntrabajar|1|5|La semana pasada ellos ___ hasta muy tarde.\ntrabajar|3|0|Esta semana ___ mucho.\ntrabajar|0|0|Cada día ___ ocho horas.\nbeber|0|0|Siempre ___ agua con las comidas.\nbeber|2|0|Antes ___ mucho café.\nbeber|1|1|Ayer tú ___ demasiado zumo.\naprender|1|0|El año pasado ___ a nadar.\naprender|3|0|Este año ___ mucho español.\naprender|0|3|Cada día ___ palabras nuevas.\ncaminar|3|0|Esta mañana ___ por el parque.\ncaminar|2|0|De niño, ___ al colegio todos los días.\ncaminar|1|5|Anoche ellos ___ por la playa.\ncocinar|1|0|Hace una hora ___ la cena.\ncocinar|0|2|Mi padre siempre ___ los domingos.\ncocinar|3|3|Hoy ___ paella.\nllamar|1|0|Ayer ___ a mis abuelos.\nllamar|3|0|Hoy ___ a mi madre dos veces.\nllamar|0|2|Mi hermana me ___ a menudo.\nmirar|1|0|Anoche ___ una serie.\nmirar|2|5|Antes ellos ___ la tele cada tarde.\nmirar|0|0|Ahora ___ el correo.\nnecesitar|0|0|Ahora ___ descansar.\nnecesitar|1|3|La semana pasada ___ ayuda con el ordenador.\nnecesitar|3|1|Hoy no ___ el coche.\nquedar|1|0|Anoche ___ con Marta en el centro.\nquedar|3|0|Esta semana ___ con mis primos dos veces.\ntomar|0|0|Cada mañana ___ un café con leche.\ntomar|1|0|Ayer ___ el tren a Sevilla.\ntomar|2|0|De joven, ___ el autobús todos los días.\nusar|0|0|Normalmente ___ el metro para ir al trabajo.\nusar|3|0|Hoy ___ el coche porque llovía.\nusar|1|5|El mes pasado ellos ___ el coche de su tío.\nviajar|1|0|El año pasado ___ a Portugal.\nviajar|3|3|Este año ___ a Italia dos veces.\nviajar|2|0|Antes ___ mucho por trabajo.".split("\n"),DB="___ he trabajado mucho.|Esta semana;Ayer;Hace un año|Perfecto compuesto: periodo de tiempo que aún no ha terminado.\n___ viajé a Italia.|El año pasado;Mañana;En una hora|Perfecto simple: «el año pasado» es un momento terminado.\n___ vivía en un pueblo pequeño.|Antes;Pasado mañana;En una semana|Imperfecto: «antes» introduce una situación habitual del pasado.\nVoy a llamarte ___.|en diez minutos;hace diez minutos;ayer|«En» + tiempo mira al futuro.\nTerminé el informe ___.|hace media hora;en media hora;mañana por la mañana|«Hace» + tiempo mira al pasado.\n___ tomo café con leche.|Normalmente;Anoche;La semana pasada|Presente de hábito: «normalmente». Las otras dos marcan el pasado.\nViví en Canadá ___ seis meses.|por;hace;antes|La duración se expresa con «por» o «durante».\nHe trabajado aquí ___ nueve años.|durante;mañana;pronto|«Durante» indica duración.\n___ salgo con mis amigos, pero no mucho.|A veces;Anoche;Hace una semana|«A veces» es una marca de frecuencia; las otras marcan el pasado.\nEl lunes llegué a Roma y ___ visité el Coliseo.|el siguiente día;el día anterior;hoy por la mañana|«El siguiente día» es el día después de uno ya mencionado.\nHoy es martes. Ayer fue lunes y ___ fue domingo.|antes de ayer;pasado mañana;la semana que viene|«Antes de ayer» es dos días antes de hoy.\nLa fiesta es ___, dentro de dos días.|pasado mañana;ayer;antes de ayer|«Pasado mañana» es dos días después de hoy.".split("\n"),DC="ayer|Perfecto simple|Ayer comí paella.\nesta mañana|Perfecto compuesto|Esta mañana he trabajado mucho. (En Latinoamérica también se usa el perfecto simple.)\nantes (hábito del pasado)|Imperfecto|Antes vivía en Sevilla.\nnormalmente|Presente|Normalmente tomo café.\nhace dos semanas|Perfecto simple|Hace dos semanas viajé a Perú.\nla semana que viene|Futuro cercano|La semana que viene voy a viajar.\neste año|Perfecto compuesto|Este año he aprendido mucho.\nmañana|Futuro cercano|Mañana voy a llamarte.\nel año pasado|Perfecto simple|El año pasado cambié de trabajo.\nen una hora|Futuro cercano|En una hora voy a salir.".split("\n");
+var Q=["yo","tú","él / ella / usted","nosotros","vosotros","ellos / ellas / ustedes"];
+var T=["Presente","Perfecto simple","Imperfecto","Perfecto compuesto"];
+var TT=["Presente","Perfecto simple","Imperfecto","Perfecto compuesto","Futuro cercano"];
+var NM=["Conjuga la frase","Elige la marca","Marca → tiempo"];
+function $(i){return document.getElementById(i)}
+function norm(s){return s.toLowerCase().trim().replace(/\s+/g," ")}
+function strip(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"")}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),x=a[i];a[i]=a[j];a[j]=x}return a}
+var Mo=[
+{qs:DA.map(function(l){var x=l.split("|"),t=+x[1],p=+x[2];return{v:L.indexOf(x[0]),t:t,p:p,s:x[3],a:gen(x[0],A[x[0]]||{},false)[t][p]}})},
+{qs:DB.map(function(l){var x=l.split("|"),c=x[1].split(";")[0],o=shuffle(x[1].split(";"));return{s:x[0],o:o,a:o.indexOf(c),r:x[2]}})},
+{qs:DC.map(function(l){var x=l.split("|");return{s:"¿Qué tiempo verbal va con la marca <b>«"+x[0]+"»</b>?",o:TT,a:TT.indexOf(x[1]),r:"Ejemplo: "+x[2]}})}];
+Mo.forEach(function(M){M.ans={};M.cur=0;M.all=M.qs});
+var m=0;
+function go(i){var M=Mo[m];M.cur=Math.max(0,Math.min(M.qs.length-1,i));show();grid()}
+function pickq(i){$("gp").style.display="none";go(i)}
+function show(){var M=Mo[m],q=M.qs[M.cur],a=M.ans[M.cur],c=$("card"),last=M.cur==M.qs.length-1,nx=last?"Ver resultados":"Siguiente →";
+if(q.o){
+c.innerHTML='<div class="chip">'+NM[m]+'</div><div class="s">'+q.s+'</div><div class="ops">'+q.o.map(function(o,i){return '<button class="op" onclick="pick('+i+')">'+o+'</button>'}).join("")+'</div><div class="fb" id="fb"></div><div id="nb"></div>';
+if(a)mark(q,a)}
+else{
+c.innerHTML='<div class="chip">'+NM[m]+'</div><div class="s">'+q.s.replace("___",'<input id="in" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">')+'</div><div class="hint"><b>'+L[q.v]+'</b> ('+EN[q.v]+') · '+Q[q.p]+'</div><button id="go">'+(a?nx:"Comprobar")+'</button><div class="fb" id="fb"></div>';
+var inp=$("in");
+if(a){inp.value=a.g;inp.disabled=true;inp.className=a.ok?"ok":"no";$("fb").className="fb "+(a.ok?"g":"r");$("fb").innerHTML=fbt(q,a)}
+else{inp.onkeydown=function(e){if(e.key=="Enter")act()};inp.focus()}
+$("go").onclick=act}
+upd()}
+function fbt(q,a){return (a.ok==2?"✓ Correcto":a.ok==1?"✓ Casi: con tilde es <b>"+q.a+"</b>":"✗ Era <b>"+q.a+"</b>")+" · <i>"+T[q.t]+"</i>"}
+function mark(q,a){var M=Mo[m],b=document.querySelectorAll(".op");
+for(var k=0;k<b.length;k++){b[k].disabled=true;if(k==q.a)b[k].classList.add("good");else if(k==a.g)b[k].classList.add("bad")}
+$("fb").className="fb "+(a.ok?"g":"r");$("fb").innerHTML=(a.ok?"✓ ":"✗ ")+q.r;
+$("nb").innerHTML='<button onclick="act()">'+(M.cur==M.qs.length-1?"Ver resultados":"Siguiente →")+'</button>'}
+function pick(i){var M=Mo[m];if(M.ans[M.cur])return;M.ans[M.cur]={g:i,ok:i==M.qs[M.cur].a?2:0};show();grid()}
+function upd(){var M=Mo[m],ok=0,n=0;for(var k in M.ans){n++;if(M.ans[k].ok)ok++}
+$("pn").innerHTML="Pregunta <b>"+(M.cur+1)+" / "+M.qs.length+"</b>";
+$("sc").innerHTML="Aciertos: <b>"+ok+"</b> · Hechas: "+n;
+$("pb").style.width=(100*n/M.qs.length)+"%"}
+function grid(){var M=Mo[m];$("gp").innerHTML='<div class="gg">'+M.qs.map(function(q,i){return '<button class="gb'+(i==M.cur?" cur":"")+(M.ans[i]?(M.ans[i].ok?" ok":" no"):"")+'" onclick="pickq('+i+')">'+(i+1)+'</button>'}).join("")+'</div><div class="lgd">Verde = acertada · roja = fallada</div>'}
+function act(){var M=Mo[m];
+if(M.ans[M.cur]){if(M.cur<M.qs.length-1)go(M.cur+1);else fin();return}
+var q=M.qs[M.cur],val=$("in").value;if(!val.trim())return;
+function c1(s){return norm(s).replace(/^(yo|tú|él|ella|usted|nosotros|vosotros|ellos|ellas|ustedes) /,"")}
+var ok=c1(val)==c1(q.a),near=!ok&&strip(c1(val))==strip(c1(q.a));
+M.ans[M.cur]={g:val,ok:ok?2:near?1:0};show();grid();$("go").focus()}
+function fin(){var M=Mo[m],ok=0,n=0,bad=[],c=$("card");
+for(var i=0;i<M.qs.length;i++){var a=M.ans[i];if(!a)continue;n++;if(a.ok)ok++;else bad.push(i)}
+var next=-1;for(i=0;i<M.qs.length;i++)if(!M.ans[i]){next=i;break}
+$("gp").style.display="none";
+var er=bad.map(function(i){var q=M.qs[i],a=M.ans[i];return "<div><span style='color:var(--mut)'>"+(i+1)+".</span> "+(q.o?q.s.replace("___","<b>"+q.o[q.a]+"</b>")+(q.s.indexOf("___")<0?" → <b>"+q.o[q.a]+"</b>":"")+"<br><span style='color:var(--no)'>Elegiste: "+q.o[a.g]+"</span>":q.s.replace("___","<b>"+q.a+"</b>")+"<br><span style='color:var(--no)'>Escribiste: "+a.g+"</span>")+"</div>"}).join("");
+c.innerHTML='<div class="big">'+ok+' / '+n+'</div><p style="text-align:center;color:var(--mut)">'+(n<M.qs.length?"Has hecho "+n+" de "+M.qs.length+".":ok==n?"¡Perfecto! 🎉":ok>=n*.8?"¡Muy bien!":ok>=n*.6?"Vas por buen camino.":"Repasa la presentación y vuelve a intentarlo.")+'</p>'+(bad.length?'<div class="err">'+er+'</div>':'')
++(next>=0?'<button id="sg">Seguir con la '+(next+1)+'</button> ':'')+(bad.length?'<button id="rv">Repasar los '+bad.length+' fallos</button> ':'')+'<button class="g" id="rn">Empezar de nuevo</button>';
+if(next>=0)$("sg").onclick=function(){go(next)};
+if(bad.length)$("rv").onclick=function(){M.qs=bad.map(function(i){return M.qs[i]});M.ans={};go(0)};
+$("rn").onclick=function(){M.qs=M.all;M.ans={};go(0)};
+$("pn").innerHTML="<b>Resultados</b>"}
+function tab(k){m=k;for(var j=0;j<3;j++)$("m"+j).className=j==k?"on":"";$("gp").style.display="none";go(Mo[m].cur)}
+for(var j=0;j<3;j++)(function(k){$("m"+k).onclick=function(){tab(k)}})(j);
+$("bp").onclick=function(){go(Mo[m].cur-1)};
+$("bn").onclick=function(){go(Mo[m].cur+1)};
+$("bg").onclick=function(){var g=$("gp");g.style.display=g.style.display=="block"?"none":"block"};
+$("br").onclick=fin;
+go(0);
+</script>
+</body>
+</html>

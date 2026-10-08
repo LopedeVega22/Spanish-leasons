@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marcas temporales en español</title>
+<style>
+:root{color-scheme:light;--bg:#f6f3ec;--card:#fff;--tx:#1e2a3a;--mut:#6b7686;--ln:#e4dfd3;
+--p:#4b50b8;--pb:#eef0fb;--n:#1f7a6d;--nb:#eaf5f2;--f:#b7791f;--fb:#fcf4e4;--z:#6b7686;--zb:#f1eee7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font-family:Georgia,'Times New Roman',serif;display:flex;flex-direction:column}
+.stage{flex:1;min-height:0;overflow-y:auto;padding:22px 18px 10px}
+.slide{display:none;max-width:920px;margin:0 auto}
+.slide.on{display:block}
+.hero{background:#1e2a3a;border-radius:16px;padding:32px 26px}
+h1{font-size:clamp(28px,6vw,46px);margin:0 0 8px;color:#fff;line-height:1.1}
+.hero p{color:#c3cddb;margin:0;font-size:17px}
+h2{font-size:clamp(24px,5vw,34px);margin:0 0 6px}
+h2 small{font:13px system-ui,sans-serif;color:var(--mut);margin-left:10px}
+.sub{color:var(--mut);font-size:16px;margin:0 0 14px;line-height:1.5}
+h3{font:600 13px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px;color:var(--mut)}
+.lg{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;font:14px system-ui,sans-serif}
+.lg span{padding:5px 14px;border-radius:999px;color:#fff}
+.g{display:grid;gap:10px}
+.x{background:var(--card);border:1px solid var(--ln);border-left:5px solid var(--z);border-radius:10px;padding:10px 12px}
+.x b{display:block;font-size:17px}
+.x span{font:italic 14px Georgia,serif;color:var(--mut)}
+.x.p{border-left-color:var(--p);background:var(--pb)}.x.n{border-left-color:var(--n);background:var(--nb)}.x.f{border-left-color:var(--f);background:var(--fb)}
+.w{overflow-x:auto}
+.tl{display:flex;gap:10px;position:relative;padding:22px 0 6px;min-width:620px}
+.tl:before{content:"";position:absolute;left:0;right:0;top:10px;height:3px;background:var(--ln)}
+.tl .x{flex:1;text-align:center}
+.mx{display:grid;grid-template-columns:90px repeat(3,minmax(150px,1fr));gap:8px;min-width:600px;align-items:stretch}
+.mx .h{font:600 13px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em;color:#fff;border-radius:8px;padding:8px;text-align:center}
+.mx .h.p{background:var(--p)}.mx .h.n{background:var(--n)}.mx .h.f{background:var(--f)}
+.mx .r{font:600 14px system-ui,sans-serif;color:var(--mut);display:flex;align-items:center}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.bar{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:center;margin:7px 0}
+.bar b{font-size:16px}.bar b span{display:block;font:italic 13px Georgia,serif;color:var(--mut);font-weight:normal}
+.bar i{display:block;height:16px;border-radius:8px;background:linear-gradient(90deg,var(--nb),var(--n))}
+.bar u{display:block;background:var(--ln);border-radius:8px;height:16px}
+mark{background:#fde9a8;padding:0 3px;border-radius:3px}
+.tg{font:12px system-ui,sans-serif;color:var(--mut);margin-top:12px}
+nav{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px;border-top:1px solid var(--ln);background:var(--card)}
+button{font:15px system-ui,sans-serif;background:#1e2a3a;color:#fff;border:0;border-radius:8px;padding:8px 18px;cursor:pointer}
+#n{font:14px system-ui,sans-serif;color:var(--mut);min-width:60px;text-align:center}
+</style>
+</head>
+<body>
+<div class="stage" id="st"></div>
+<nav><button id="pv">←</button><span id="n"></span><button id="nx">→</button></nav>
+<script>
+function X(a,b,c){return '<div class="x '+(c||"")+'"><b>'+a+'</b><span>'+b+'</span></div>'}
+function G(a,c,w){return '<div class="g" style="grid-template-columns:repeat(auto-fill,minmax('+(w||210)+'px,1fr))">'+a.map(function(e){return X(e[0],e[1],e[2]||c)}).join("")+'</div>'}
+function MX(cols,rows){var h='<div class="w"><div class="mx"><div></div>'+cols.map(function(c){return '<div class="h '+c[1]+'">'+c[0]+'</div>'}).join("");
+rows.forEach(function(r){h+='<div class="r">'+r[0]+'</div>'+r[1].map(function(e,i){return X(e[0],e[1],cols[i][1])}).join("")});return h+'</div></div>'}
+function H(t,s,sub){return '<h2>'+t+'<small>'+s+'</small></h2><p class="sub">'+sub+'</p>'}
+var S=[];
+S.push('<div class="hero"><h1>Marcas temporales en español</h1><p>Expresiones para decir cuándo pasó algo, cuánto duró y con qué frecuencia. Fuente: Speak Languages.</p></div><div class="lg"><span style="background:var(--p)">Pasado</span><span style="background:var(--n)">Presente</span><span style="background:var(--f)">Futuro</span></div>');
+S.push(H("Especificando el día","(specifying the day)","Cinco días alrededor de hoy.")+'<div class="w"><div class="tl">'+X("antes de ayer","the day before yesterday","p")+X("ayer","yesterday","p")+X("hoy","today","n")+X("mañana","tomorrow","f")+X("pasado mañana","the day after tomorrow","f")+'</div></div>');
+S.push(H("La hora del día","(time of day)","Mañana, tarde y noche, combinados con ayer, hoy y mañana.")
++MX([["Ayer","p"],["Hoy","n"],["Mañana","f"]],[
+["Mañana",[["ayer por la mañana","yesterday morning"],["esta mañana","this morning"],["mañana por la mañana","tomorrow morning"]]],
+["Tarde",[["ayer por la tarde","yesterday afternoon"],["esta tarde","this afternoon"],["mañana por la tarde","tomorrow afternoon"]]],
+["Noche",[["ayer por la noche","last night"],["esta noche","tonight"],["mañana por la noche","tomorrow night"]]]])
++'<h3>También</h3>'+G([["por la mañana","in the morning","z"],["por la tarde","in the afternoon","z"],["por la noche","at night","z"],["la pasada noche","last night","p"]],"z",180));
+S.push(H("Semana, mes o año","(week, month or year)","Pasado, actual y próximo.")
++MX([["Pasado","p"],["Actual","n"],["Que viene","f"]],[
+["Semana",[["la semana pasada","last week"],["esta semana","this week"],["la semana que viene","next week"]]],
+["Mes",[["el mes pasado","last month"],["este mes","this month"],["el mes que viene","next month"]]],
+["Año",[["el año pasado","last year"],["este año","this year"],["el año que viene","next year"]]]]));
+S.push(H("Otras expresiones","(other expressions)","Ahora, antes, pronto y más.")+G([["ahora","now","n"],["antes","before","p"],["inmediatamente / justo ahora","immediately / right now","n"],["pronto","soon","f"],["más temprano","earlier","p"],["más tarde","later","f"]],"",230));
+S.push(H("Hace… y en…","(ago and in)","<b>Hace</b> + tiempo mira al pasado. <b>En</b> + tiempo mira al futuro.")+'<div class="cols"><div><h3>Hace + tiempo → pasado</h3>'+G([["hace poco tiempo","a short time ago"],["hace cinco minutos","five minutes ago"],["hace media hora","half an hour ago"],["hace una hora","an hour ago"],["hace una semana","a week ago"],["hace dos semanas","two weeks ago"],["hace un mes","a month ago"],["hace un año","a year ago"],["hace mucho tiempo","a long time ago"]],"p",200)+'</div><div><h3>En + tiempo → futuro</h3>'+G([["en diez minutos","in ten minutes"],["en una hora","in an hour"],["en una semana","in a week"],["en diez días","in ten days"],["en tres semanas","in three weeks"],["en dos meses","in two months"],["en diez años","in ten years"]],"f",200)+'</div></div>');
+S.push(H("Anterior y siguiente","(previous and next)","Se refieren a un momento ya mencionado.")+'<div class="cols"><div><h3>Anterior</h3>'+G([["el día anterior","the previous day"],["la semana anterior","the previous week"],["el mes anterior","the previous month"],["el año anterior","the previous year"]],"p",200)+'</div><div><h3>Siguiente</h3>'+G([["el siguiente día","the next day"],["la siguiente semana","the next week"],["el siguiente mes","the next month"],["el siguiente año","the next year"]],"f",200)+'</div></div>');
+S.push(H("Duración","(duration)","La duración se expresa con <mark>por</mark> o <mark>durante</mark>.")+G([["viví en Canadá <mark>por</mark> seis meses","I lived in Canada for six months"],["he trabajado aquí <mark>durante</mark> nueve años","I have worked here for nine years"],["voy a Francia mañana <mark>por</mark> dos semanas","I'm going to France tomorrow for two weeks"],["estuvimos nadando <mark>durante</mark> un largo tiempo","we were swimming for a long time"]],"z",380));
+var FR=[["nunca","never",0],["raramente","rarely",15],["ocasionalmente","occasionally",30],["a veces","sometimes",45],["a menudo / frecuentemente","often / frequently",70],["usualmente / normalmente","usually / normally",85],["siempre","always",100]];
+S.push(H("Frecuencia","(frequency)","De «nunca» a «siempre» (la escala es orientativa).")+FR.map(function(f){return '<div class="bar"><b>'+f[0]+'<span>'+f[1]+'</span></b><u><i style="width:'+Math.max(f[2],2)+'%"></i></u></div>'}).join("")
++'<h3>Cada cuánto</h3>'+G([["cada día / diariamente","every day / daily"],["cada semana / semanalmente","every week / weekly"],["cada mes / mensualmente","every month / monthly"],["cada año / anualmente","every year / annually"]],"n",230));
+S.push(H("¿Qué tiempo verbal uso?","(guía práctica)","Añadido por mí, no viene de la fuente. En España, hoy y esta semana suelen ir con perfecto compuesto; en Latinoamérica es habitual el perfecto simple.")+G([
+["Perfecto simple","ayer, la semana pasada, hace una hora, el día anterior<br><i>Ayer comí paella.</i>","p"],
+["Perfecto compuesto","hoy, esta mañana, este año, hace poco<br><i>Esta mañana he trabajado mucho.</i>","n"],
+["Imperfecto","antes, siempre, a menudo (en el pasado)<br><i>Antes vivía en Sevilla.</i>","z"],
+["Presente","ahora, normalmente, cada día, nunca<br><i>Normalmente tomo café.</i>","n"],
+["Futuro cercano","mañana, en una hora, la semana que viene, pronto<br><i>Mañana voy a llamarte.</i>","f"]],"",270));
+var st=document.getElementById("st"),n=document.getElementById("n"),i=0;
+st.innerHTML=S.map(function(s){return '<section class="slide">'+s+'</section>'}).join("");
+var E=st.children;
+function go(d){i=Math.max(0,Math.min(E.length-1,i+d));for(var j=0;j<E.length;j++)E[j].className="slide"+(j==i?" on":"");n.textContent=(i+1)+" / "+E.length;st.scrollTop=0}
+document.getElementById("pv").onclick=function(){go(-1)};
+document.getElementById("nx").onclick=function(){go(1)};
+document.onkeydown=function(e){if(e.key=="ArrowRight"||e.key==" ")go(1);if(e.key=="ArrowLeft")go(-1)};
+go(0);
+</script>
+</body>
+</html>

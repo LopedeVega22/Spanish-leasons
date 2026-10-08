@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Los 50 verbos más usados: conjugación completa</title>
+<style>
+:root{color-scheme:light;--bg:#f6f3ec;--card:#fff;--tx:#1e2a3a;--mut:#6b7686;--ln:#e4dfd3;
+--t0:#1f7a6d;--t0b:#eaf5f2;--t1:#4b50b8;--t1b:#eef0fb;--t2:#b7791f;--t2b:#fcf4e4;--t3:#9b3d78;--t3b:#f8ecf3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--tx);font-family:Georgia,'Times New Roman',serif;display:flex;flex-direction:column}
+.stage{flex:1;min-height:0;overflow-y:auto;padding:22px 18px 10px}
+.slide{display:none;max-width:900px;margin:0 auto}
+.slide.on{display:block}
+.hero{background:#1e2a3a;border-radius:16px;padding:30px 26px}
+h1{font-size:clamp(28px,6vw,44px);margin:0 0 8px;color:#fff;line-height:1.1}
+.hero p{color:#c3cddb;margin:0}
+h2{font-size:clamp(26px,5vw,38px);margin:0 0 14px;color:var(--tx);letter-spacing:-.01em}
+h2 .en{font-size:clamp(16px,3vw,22px);color:var(--mut);font-style:italic;font-weight:normal;margin-left:12px}
+h2 small{font-size:13px;color:var(--mut);font-weight:normal;margin-left:10px;font-family:system-ui,sans-serif}
+p{color:var(--mut);font-size:17px;line-height:1.5;margin:6px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:16px}
+.c{background:var(--card);border:1px solid var(--ln);border-top:4px solid var(--mut);border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px rgba(30,42,58,.06)}
+.c0{border-top-color:var(--t0)}.c1{border-top-color:var(--t1)}.c2{border-top-color:var(--t2)}.c3{border-top-color:var(--t3)}
+.c0 b{color:var(--t0)}.c1 b{color:var(--t1)}.c2 b{color:var(--t2)}.c3 b{color:var(--t3)}
+.c b{display:block;font-size:18px;margin-bottom:2px}
+.c span{font-size:14px;color:var(--mut);font-family:system-ui,sans-serif}
+.c i{display:block;margin-top:8px;font-size:16px;line-height:1.55}
+.ix{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px;margin-top:14px}
+.ix button{background:var(--card);color:var(--tx);border:1px solid var(--ln);padding:9px 6px;font-size:15px}
+.w{overflow-x:auto;border-radius:12px;border:1px solid var(--ln);box-shadow:0 1px 3px rgba(30,42,58,.08);background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--ln);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+th{font-size:12px;color:#fff;text-transform:uppercase;letter-spacing:.05em;font-family:system-ui,sans-serif;background:var(--mut)}
+th.t0{background:var(--t0)}th.t1{background:var(--t1)}th.t2{background:var(--t2)}th.t3{background:var(--t3)}
+td:first-child{color:var(--mut);font-size:13px;font-family:system-ui,sans-serif}
+td.t0{background:var(--t0b)}td.t1{background:var(--t1b)}td.t2{background:var(--t2b)}td.t3{background:var(--t3b)}
+td.irr{font-weight:700;box-shadow:inset 3px 0 0 currentColor}
+td.t0.irr{color:var(--t0)}td.t1.irr{color:var(--t1)}td.t2.irr{color:var(--t2)}td.t3.irr{color:var(--t3)}
+.lg{font-size:13px;color:var(--mut);margin-top:12px;font-family:system-ui,sans-serif}
+.lg em{font-weight:700;font-style:normal;color:var(--tx);box-shadow:inset 3px 0 0 var(--tx);padding:1px 8px;background:var(--card)}
+nav{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px;border-top:1px solid var(--ln);background:var(--card)}
+button{font:inherit;font-family:system-ui,sans-serif;background:#1e2a3a;color:#fff;border:0;border-radius:8px;padding:8px 16px;cursor:pointer}
+#n{color:var(--mut);font-size:14px;min-width:64px;text-align:center;font-family:system-ui,sans-serif}
+.bd{display:inline-block;font-family:system-ui,sans-serif;font-size:13px;padding:3px 12px;border-radius:999px;margin:-4px 0 12px}
+.bd.rg{background:#dff1e6;color:#1f7a45}.bd.ir{background:#fde8d8;color:#a4561a}
+h3{font-size:16px;margin:18px 0 0;font-family:system-ui,sans-serif;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="stage" id="st"></div>
+<nav><button id="pv">←</button><button id="ib">Índice</button><span id="n"></span><button id="nx">→</button></nav>
+<script>
+var L="abrir aprender beber buscar caminar cerrar cocinar comenzar comer conocer creer dar decir encontrar entender escribir estar haber hablar hacer ir jugar leer llamar llegar mirar necesitar pagar pedir pensar poder poner preferir quedar querer saber salir sentarse sentir ser tener tomar trabajar traer usar venir ver viajar vivir volver".split(" ");
+var EN="to open|to learn|to drink|to look for|to walk|to close|to cook|to begin|to eat|to know (a person or place)|to believe|to give|to say / to tell|to find|to understand|to write|to be (state / location)|to have (auxiliary) / there is|to speak|to do / to make|to go|to play|to read|to call|to arrive|to look at|to need|to pay|to ask for / to order|to think|can / to be able to|to put|to prefer|to stay / to meet up|to want / to love|to know (a fact) / to know how to|to go out / to leave|to sit down|to feel|to be (identity / trait)|to have|to take / to drink|to work|to bring|to use|to come|to see|to travel|to live|to return".split("|");
+var A={abrir:{t:"abierto"},cerrar:{s:"ie"},comenzar:{s:"ie"},conocer:{y:"conozco"},
+dar:{p:"doy,das,da,damos,dais,dan",d:"di,diste,dio,dimos,disteis,dieron"},
+decir:{s:"i",y:"digo",u:"dij",t:"dicho"},encontrar:{s:"ue"},entender:{s:"ie"},escribir:{t:"escrito"},
+estar:{p:"estoy,estás,está,estamos,estáis,están",u:"estuv"},haber:{p:"he,has,ha,hemos,habéis,han",u:"hub"},hacer:{y:"hago",u:"hic",t:"hecho"},
+ir:{p:"voy,vas,va,vamos,vais,van",d:"fui,fuiste,fue,fuimos,fuisteis,fueron",m:"iba,ibas,iba,íbamos,ibais,iban"},
+jugar:{s:"uu"},pedir:{s:"i"},pensar:{s:"ie"},poder:{s:"ue",u:"pud"},poner:{y:"pongo",u:"pus",t:"puesto"},
+preferir:{s:"ie"},querer:{s:"ie",u:"quis"},saber:{y:"sé",u:"sup"},salir:{y:"salgo"},sentarse:{s:"ie"},sentir:{s:"ie"},
+ser:{p:"soy,eres,es,somos,sois,son",d:"fui,fuiste,fue,fuimos,fuisteis,fueron",m:"era,eras,era,éramos,erais,eran"},
+tener:{s:"ie",y:"tengo",u:"tuv"},traer:{y:"traigo",u:"traj"},venir:{s:"ie",y:"vengo",u:"vin"},
+ver:{p:"veo,ves,ve,vemos,veis,ven",d:"vi,viste,vio,vimos,visteis,vieron",m:"veía,veías,veía,veíamos,veíais,veían",t:"visto"},
+volver:{s:"ue",t:"vuelto"}};
+function gen(inf,a,reg){
+if(reg)a={};
+var rf=/se$/.test(inf),b=rf?inf.slice(0,-2):inf,t=b.slice(-2),st=b.slice(0,-2),R=["me","te","se","nos","os","se"];
+var E={ar:["o","as","a","amos","áis","an"],er:["o","es","e","emos","éis","en"],ir:["o","es","e","imos","ís","en"]}[t];
+var P=[],D=[],M=[];
+function sc(s){var k=a.s;
+if(k=="ie")return s.replace(/e([^e]*)$/,"ie$1");
+if(k=="ue")return s.replace(/o([^o]*)$/,"ue$1");
+if(k=="uu")return s.replace(/u([^u]*)$/,"ue$1");
+if(k=="i")return s.replace(/e([^e]*)$/,"i$1");return s}
+if(a.p)P=a.p.split(",");else{for(var i=0;i<6;i++)P[i]=((i<3||i==5)?sc(st):st)+E[i];if(a.y)P[0]=a.y}
+var v=/[aeo]$/.test(st);
+if(a.d)D=a.d.split(",");
+else if(a.u){var j=/j$/.test(a.u);D=["e","iste","o","imos","isteis",j?"eron":"ieron"].map(function(e){return a.u+e});if(inf=="hacer")D[2]="hizo"}
+else if(t=="ar")D=["é","aste","ó","amos","asteis","aron"].map(function(e,i){var s=st;if(i==0&&!reg)s=s.replace(/c$/,"qu").replace(/g$/,"gu").replace(/z$/,"c");return s+e});
+else D=["í","iste","ió","imos","isteis","ieron"].map(function(e,i){var s=st;
+if(a.s&&t=="ir"&&(i==2||i==5)&&!reg)s=s.replace(/e([^e]*)$/,"i$1");
+if(v&&!reg){if(i==2)return s+"yó";if(i==5)return s+"yeron";return s+e.replace("i","í")}
+return s+e});
+if(a.m)M=a.m.split(",");
+else M=(t=="ar"?["aba","abas","aba","ábamos","abais","aban"]:["ía","ías","ía","íamos","íais","ían"]).map(function(e){return st+e});
+var pt=a.t||(st+(t=="ar"?"ado":(v&&!reg?"ído":"ido")));
+var C=["he","has","ha","hemos","habéis","han"].map(function(h){return h+" "+pt});
+var out=[P,D,M,C];
+if(rf)out=out.map(function(c){return c.map(function(f,i){return R[i]+" "+f})});
+return out}
+var Q=["yo","tú","él / ella / Ud.","nosotros","vosotros","ellos / ellas / Uds."];
+var T=["Presente","Perfecto simple","Imperfecto","Perfecto compuesto"];
+var S=[],NR=4;
+S.push('<div class="hero"><h1>Los 50 verbos más usados en español</h1><p>Conjugación completa en presente y pasado. Fuente: Lingolia.</p></div><div class="grid">'
++'<div class="c c0"><b>Presente</b><span>Hábitos y lo que pasa ahora</span></div>'
++'<div class="c c1"><b>Perfecto simple</b><span>Acción terminada en el pasado (ayer llegué)</span></div>'
++'<div class="c c2"><b>Imperfecto</b><span>Costumbre o descripción en el pasado</span></div>'
++'<div class="c c3"><b>Perfecto compuesto</b><span>Pasado conectado con el presente (he llegado)</span></div></div>');
+S.push('<h2>Índice</h2><div class="ix">'+L.map(function(v,k){return '<button onclick="go(0,'+(k+2+NR)+')">'+v+'<br><small style="color:var(--mut);font-size:11px">'+EN[k]+'</small></button>'}).join("")+'<button onclick="go(0,2)">Verbos regulares</button><button onclick="go(0,'+(52+NR)+')">Ejemplos</button></div>');
+function ET(cls,title,heads,cols){var rows=Q.map(function(q,i){return "<tr><td>"+q+"</td>"+cols.map(function(c){return '<td class="'+cls+'">'+c[i]+"</td>"}).join("")+"</tr>"}).join("");return '<div class="w" style="margin-top:14px"><table><tr><th class="'+cls+'">'+title+'</th>'+heads.map(function(h){return '<th class="'+cls+'">'+h+"</th>"}).join("")+'</tr>'+rows+'</table></div>'}
+var AUX=["he","has","ha","hemos","habéis","han"];
+S.push('<h2>Verbos regulares<span class="en">(regular verbs)</span></h2><p>Un verbo es regular cuando su raíz no cambia y usa siempre las mismas terminaciones.</p><div class="grid">'
++'<div class="c"><b>1. Busca la raíz</b><span>Quita -ar, -er o -ir del infinitivo</span><i>hablar → <b style="display:inline">habl-</b><br>comer → <b style="display:inline">com-</b><br>vivir → <b style="display:inline">viv-</b></i></div>'
++'<div class="c"><b>2. Añade la terminación</b><span>Según la persona y el tiempo</span><i>habl- + <b style="display:inline">-amos</b> = hablamos<br>com- + <b style="display:inline">-ía</b> = comía<br>viv- + <b style="display:inline">-í</b> = viví</i></div>'
++'<div class="c"><b>3. Perfecto compuesto</b><span>haber + participio</span><i>he habl<b style="display:inline">ado</b><br>he com<b style="display:inline">ido</b><br>he viv<b style="display:inline">ido</b></i></div></div>'
++'<p>Tres modelos: <b>hablar</b> (-ar), <b>comer</b> (-er) y <b>vivir</b> (-ir). Las terminaciones están en las dos diapositivas siguientes.</p>');
+S.push('<h2>Terminaciones regulares<span class="en">(1/2)</span></h2>'
++ET("t0","Presente",["-ar","-er","-ir"],[["-o","-as","-a","-amos","-áis","-an"],["-o","-es","-e","-emos","-éis","-en"],["-o","-es","-e","-imos","-ís","-en"]])
++ET("t1","Perfecto simple",["-ar","-er / -ir"],[["-é","-aste","-ó","-amos","-asteis","-aron"],["-í","-iste","-ió","-imos","-isteis","-ieron"]]));
+S.push('<h2>Terminaciones regulares<span class="en">(2/2)</span></h2>'
++ET("t2","Imperfecto",["-ar","-er / -ir"],[["-aba","-abas","-aba","-ábamos","-abais","-aban"],["-ía","-ías","-ía","-íamos","-íais","-ían"]])
++ET("t3","Perfecto compuesto",["hablar","comer","vivir"],[AUX.map(function(h){return h+" hablado"}),AUX.map(function(h){return h+" comido"}),AUX.map(function(h){return h+" vivido"})])
++'<div class="lg">Participio regular: -ar → -ado · -er / -ir → -ido</div>');
+var RG=[],IR=[];
+L.forEach(function(v,k){var g=gen(v,A[v]||{},false),r=gen(v,{},true),n=0;g.forEach(function(c,x){c.forEach(function(f,i){if(f!=r[x][i])n++})});(n?IR:RG).push(k)});
+function chips(a){return '<div class="ix">'+a.map(function(k){return '<button onclick="go(0,'+(k+2+NR)+')">'+L[k]+'</button>'}).join("")+'</div>'}
+function bd(k){if(RG.indexOf(k)<0)return '<span class="bd ir">Irregular</span>';var e=L[k].slice(-2);return '<span class="bd rg">Regular · se conjuga como '+(e=="ar"?"hablar":e=="er"?"comer":"vivir")+'</span>'}
+S.push('<h2>¿Cuáles son regulares?</h2><p>Modelos: hablar, comer y vivir. Toca un verbo para ir a su conjugación.</p><h3>Regulares ('+RG.length+')</h3>'+chips(RG)+'<h3>Irregulares o con cambios ('+IR.length+')</h3>'+chips(IR));
+L.forEach(function(v,k){
+var a=A[v]||{},g=gen(v,a,false),r=gen(v,a,true);
+var rows=Q.map(function(q,i){return "<tr><td>"+q+"</td>"+g.map(function(c,x){return '<td class="t'+x+(c[i]!=r[x][i]?' irr':'')+'">'+c[i]+"</td>"}).join("")+"</tr>"}).join("");
+S.push('<h2>'+v+'<span class="en">('+EN[k]+')</span><small>'+(k+1)+' / 50</small></h2>'+bd(k)+'<div class="w"><table><tr><th></th>'+T.map(function(h,x){return '<th class="t'+x+'">'+h+"</th>"}).join("")+'</tr>'+rows+'</table></div><div class="lg"><em>Resaltado</em> = forma irregular'+(v=="haber"?". Como auxiliar forma los tiempos compuestos (he hablado). Impersonal: hay, hubo, había.":"")+'</div>')});
+S.push('<h2>Ejemplos de los pasados</h2><div class="grid">'
++'<div class="c c1"><b>Perfecto simple</b><span>Acción terminada, momento concreto</span><i>Ayer llegué tarde al trabajo.<br>El año pasado viajé a Perú.<br>Anoche cené y me acosté pronto.</i></div>'
++'<div class="c c2"><b>Imperfecto</b><span>Costumbres y descripciones</span><i>Cuando era adolescente, escribía poemas.<br>De niño, jugaba al fútbol cada día.<br>Hacía calor y la gente caminaba.</i></div>'
++'<div class="c c3"><b>Perfecto compuesto</b><span>Pasado que llega hasta el presente</span><i>¿Qué has comido hoy?<br>Esta semana he trabajado mucho.<br>Hemos pedido una pizza.</i></div>'
++'<div class="c"><b>Comparación</b><span>El mismo verbo, tres pasados</span><i>Ayer comí paella.<br>Los domingos comía paella.<br>Hoy he comido paella.</i></div></div>');
+var st=document.getElementById("st"),n=document.getElementById("n"),i=0;
+st.innerHTML=S.map(function(s){return '<section class="slide">'+s+'</section>'}).join("");
+var E=st.children;
+function go(d,abs){i=abs!=null?abs:Math.max(0,Math.min(E.length-1,i+d));for(var j=0;j<E.length;j++)E[j].className="slide"+(j==i?" on":"");n.textContent=(i+1)+" / "+E.length;st.scrollTop=0}
+document.getElementById("pv").onclick=function(){go(-1)};
+document.getElementById("nx").onclick=function(){go(1)};
+document.getElementById("ib").onclick=function(){go(0,1)};
+document.onkeydown=function(e){if(e.key=="ArrowRight"||e.key==" ")go(1);if(e.key=="ArrowLeft")go(-1)};
+go(0);
+</script>
+</body>
+</html>
