@@ -111,18 +111,21 @@ var AUX=["he","has","ha","hemos","habéis","han"];
 S.push('<h2>Verbos regulares<span class="en">(regular verbs)</span></h2><p>Un verbo es regular cuando su raíz no cambia y usa siempre las mismas terminaciones.</p><div class="grid">'
 +'<div class="c"><b>1. Busca la raíz</b><span>Quita -ar, -er o -ir del infinitivo</span><i>hablar → <b style="display:inline">habl-</b><br>comer → <b style="display:inline">com-</b><br>vivir → <b style="display:inline">viv-</b></i></div>'
 +'<div class="c"><b>2. Añade la terminación</b><span>Según la persona y el tiempo</span><i>habl- + <b style="display:inline">-amos</b> = hablamos<br>com- + <b style="display:inline">-ía</b> = comía<br>viv- + <b style="display:inline">-í</b> = viví</i></div>'
-+'<div class="c"><b>3. Perfecto compuesto</b><span>haber + participio</span><i>he habl<b style="display:inline">ado</b><br>he com<b style="display:inline">ido</b><br>he viv<b style="display:inline">ido</b></i></div></div>'
-+'<p>Tres modelos: <b>hablar</b> (-ar), <b>comer</b> (-er) y <b>vivir</b> (-ir). Las terminaciones están en las dos diapositivas siguientes.</p>');
-S.push('<h2>Terminaciones regulares<span class="en">(1/2)</span></h2>'
++'<div class="c"><b>3. Perfecto compuesto</b><span>haber + participio</span><i>he habl<b style="display:inline">ado</b><br>he com<b style="display:inline">ido</b><br>he viv<b style="display:inline">ido</b></i></div>'
++'<div class="c"><b>4. Futuro simple</b><span>Se añade al infinitivo entero</span><i>hablar + <b style="display:inline">é</b> = hablaré<br>comer + <b style="display:inline">emos</b> = comeremos<br>vivir + <b style="display:inline">án</b> = vivirán</i></div></div>'
++'<p>Tres modelos: <b>hablar</b> (-ar), <b>comer</b> (-er) y <b>vivir</b> (-ir). Las terminaciones están en las tres diapositivas siguientes.</p>');
+S.push('<h2>Terminaciones regulares<span class="en">(1/3)</span></h2>'
 +ET("t0","Presente",["-ar","-er","-ir"],[["-o","-as","-a","-amos","-áis","-an"],["-o","-es","-e","-emos","-éis","-en"],["-o","-es","-e","-imos","-ís","-en"]])
 +ET("t1","Perfecto simple",["-ar","-er / -ir"],[["-é","-aste","-ó","-amos","-asteis","-aron"],["-í","-iste","-ió","-imos","-isteis","-ieron"]]));
-S.push('<h2>Terminaciones regulares<span class="en">(2/2)</span></h2>'
+S.push('<h2>Terminaciones regulares<span class="en">(2/3)</span></h2>'
 +ET("t2","Imperfecto",["-ar","-er / -ir"],[["-aba","-abas","-aba","-ábamos","-abais","-aban"],["-ía","-ías","-ía","-íamos","-íais","-ían"]])
 +ET("t3","Perfecto compuesto",["hablar","comer","vivir"],[AUX.map(function(h){return h+" hablado"}),AUX.map(function(h){return h+" comido"}),AUX.map(function(h){return h+" vivido"})])
 +'<div class="lg">Participio regular: -ar → -ado · -er / -ir → -ido</div>');
 var ENF=["é","ás","á","emos","éis","án"];
-S.push('<h2>Futuro<span class="en">(future)</span></h2>'
-+ET("t4","Futuro simple",["hablar","comer","vivir"],["hablar","comer","vivir"].map(function(v){return ENF.map(function(e){return v+e})}))
+S.push('<h2>Terminaciones regulares<span class="en">(3/3 · futuro)</span></h2>'
++ET("t4","Futuro simple",["-ar / -er / -ir"],[ENF.map(function(e){return "-"+e})])
++'<div class="lg">Se añaden al infinitivo completo: hablar + é = hablaré</div>'
++ET("t4","Ejemplos",["hablar","comer","vivir"],["hablar","comer","vivir"].map(function(v){return ENF.map(function(e){return v+e})}))
 +'<div class="lg">Regla: infinitivo + -é, -ás, -á, -emos, -éis, -án (igual para -ar, -er e -ir)</div>'
 +ET("t4","Ir a + infinitivo",["Ejemplo"],[["voy a hablar","vas a comer","va a vivir","vamos a hablar","vais a comer","van a vivir"]])
 +'<div class="lg">Futuro simple irregular (cambia la raíz): tener → tendré · hacer → haré · decir → diré · poder → podré · poner → pondré · querer → querré · saber → sabré · salir → saldré · venir → vendré · haber → habrá</div>');
