@@ -23,7 +23,7 @@ p{color:var(--mut);font-size:17px;line-height:1.5;margin:6px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:16px}
 .c{background:var(--card);border:1px solid var(--ln);border-top:4px solid var(--mut);border-radius:12px;padding:14px 16px;box-shadow:0 1px 3px rgba(30,42,58,.06)}
 .c0{border-top-color:var(--t0)}.c1{border-top-color:var(--t1)}.c2{border-top-color:var(--t2)}.c3{border-top-color:var(--t3)}
-.c0 b{color:var(--t0)}.c1 b{color:var(--t1)}.c2 b{color:var(--t2)}.c3 b{color:var(--t3)}
+.c0 b{color:var(--t0)}.c1 b{color:var(--t1)}.c2 b{color:var(--t2)}.c3 b{color:var(--t3)}.c4{border-top-color:#2f6f9f}.c4 b{color:#2f6f9f}
 .c b{display:block;font-size:18px;margin-bottom:2px}
 .c span{font-size:14px;color:var(--mut);font-family:system-ui,sans-serif}
 .c i{display:block;margin-top:8px;font-size:16px;line-height:1.55}
@@ -34,11 +34,11 @@ table{border-collapse:collapse;width:100%;font-size:16px}
 th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--ln);white-space:nowrap}
 tr:last-child td{border-bottom:0}
 th{font-size:12px;color:#fff;text-transform:uppercase;letter-spacing:.05em;font-family:system-ui,sans-serif;background:var(--mut)}
-th.t0{background:var(--t0)}th.t1{background:var(--t1)}th.t2{background:var(--t2)}th.t3{background:var(--t3)}
+th.t0{background:var(--t0)}th.t1{background:var(--t1)}th.t2{background:var(--t2)}th.t3{background:var(--t3)}th.t4{background:#2f6f9f}
 td:first-child{color:var(--mut);font-size:13px;font-family:system-ui,sans-serif}
-td.t0{background:var(--t0b)}td.t1{background:var(--t1b)}td.t2{background:var(--t2b)}td.t3{background:var(--t3b)}
+td.t0{background:var(--t0b)}td.t1{background:var(--t1b)}td.t2{background:var(--t2b)}td.t3{background:var(--t3b)}td.t4{background:#eaf2f9}
 td.irr{font-weight:700;box-shadow:inset 3px 0 0 currentColor}
-td.t0.irr{color:var(--t0)}td.t1.irr{color:var(--t1)}td.t2.irr{color:var(--t2)}td.t3.irr{color:var(--t3)}
+td.t0.irr{color:var(--t0)}td.t1.irr{color:var(--t1)}td.t2.irr{color:var(--t2)}td.t3.irr{color:var(--t3)}td.t4.irr{color:#2f6f9f}
 .lg{font-size:13px;color:var(--mut);margin-top:12px;font-family:system-ui,sans-serif}
 .lg em{font-weight:700;font-style:normal;color:var(--tx);box-shadow:inset 3px 0 0 var(--tx);padding:1px 8px;background:var(--card)}
 nav{display:flex;align-items:center;justify-content:center;gap:12px;padding:10px;border-top:1px solid var(--ln);background:var(--card)}
@@ -60,13 +60,13 @@ var L="abrir aprender beber buscar caminar cerrar cocinar comenzar comer conocer
 var EN="to open|to learn|to drink|to look for|to walk|to close|to cook|to begin|to eat|to know (a person or place)|to believe|to give|to say / to tell|to find|to understand|to write|to be (state / location)|to have (auxiliary) / there is|to speak|to do / to make|to go|to play|to read|to call|to arrive|to look at|to need|to pay|to ask for / to order|to think|can / to be able to|to put|to prefer|to stay / to meet up|to want / to love|to know (a fact) / to know how to|to go out / to leave|to sit down|to feel|to be (identity / trait)|to have|to take / to drink|to work|to bring|to use|to come|to see|to travel|to live|to return".split("|");
 var A={abrir:{t:"abierto"},cerrar:{s:"ie"},comenzar:{s:"ie"},conocer:{y:"conozco"},
 dar:{p:"doy,das,da,damos,dais,dan",d:"di,diste,dio,dimos,disteis,dieron"},
-decir:{s:"i",y:"digo",u:"dij",t:"dicho"},encontrar:{s:"ue"},entender:{s:"ie"},escribir:{t:"escrito"},
-estar:{p:"estoy,estás,está,estamos,estáis,están",u:"estuv"},haber:{p:"he,has,ha,hemos,habéis,han",u:"hub"},hacer:{y:"hago",u:"hic",t:"hecho"},
+decir:{s:"i",y:"digo",u:"dij",t:"dicho",f:"dir"},encontrar:{s:"ue"},entender:{s:"ie"},escribir:{t:"escrito"},
+estar:{p:"estoy,estás,está,estamos,estáis,están",u:"estuv"},haber:{p:"he,has,ha,hemos,habéis,han",u:"hub",f:"habr"},hacer:{y:"hago",u:"hic",t:"hecho",f:"har"},
 ir:{p:"voy,vas,va,vamos,vais,van",d:"fui,fuiste,fue,fuimos,fuisteis,fueron",m:"iba,ibas,iba,íbamos,ibais,iban"},
-jugar:{s:"uu"},pedir:{s:"i"},pensar:{s:"ie"},poder:{s:"ue",u:"pud"},poner:{y:"pongo",u:"pus",t:"puesto"},
-preferir:{s:"ie"},querer:{s:"ie",u:"quis"},saber:{y:"sé",u:"sup"},salir:{y:"salgo"},sentarse:{s:"ie"},sentir:{s:"ie"},
+jugar:{s:"uu"},pedir:{s:"i"},pensar:{s:"ie"},poder:{s:"ue",u:"pud",f:"podr"},poner:{y:"pongo",u:"pus",t:"puesto",f:"pondr"},
+preferir:{s:"ie"},querer:{s:"ie",u:"quis",f:"querr"},saber:{y:"sé",u:"sup",f:"sabr"},salir:{y:"salgo",f:"saldr"},sentarse:{s:"ie"},sentir:{s:"ie"},
 ser:{p:"soy,eres,es,somos,sois,son",d:"fui,fuiste,fue,fuimos,fuisteis,fueron",m:"era,eras,era,éramos,erais,eran"},
-tener:{s:"ie",y:"tengo",u:"tuv"},traer:{y:"traigo",u:"traj"},venir:{s:"ie",y:"vengo",u:"vin"},
+tener:{s:"ie",y:"tengo",u:"tuv",f:"tendr"},traer:{y:"traigo",u:"traj"},venir:{s:"ie",y:"vengo",u:"vin",f:"vendr"},
 ver:{p:"veo,ves,ve,vemos,veis,ven",d:"vi,viste,vio,vimos,visteis,vieron",m:"veía,veías,veía,veíamos,veíais,veían",t:"visto"},
 volver:{s:"ue",t:"vuelto"}};
 function gen(inf,a,reg){
@@ -92,17 +92,19 @@ if(a.m)M=a.m.split(",");
 else M=(t=="ar"?["aba","abas","aba","ábamos","abais","aban"]:["ía","ías","ía","íamos","íais","ían"]).map(function(e){return st+e});
 var pt=a.t||(st+(t=="ar"?"ado":(v&&!reg?"ído":"ido")));
 var C=["he","has","ha","hemos","habéis","han"].map(function(h){return h+" "+pt});
-var out=[P,D,M,C];
+var F=["é","ás","á","emos","éis","án"].map(function(e){return (a.f||b)+e});
+var out=[P,D,M,C,F];
 if(rf)out=out.map(function(c){return c.map(function(f,i){return R[i]+" "+f})});
 return out}
 var Q=["yo","tú","él / ella / Ud.","nosotros","vosotros","ellos / ellas / Uds."];
-var T=["Presente","Perfecto simple","Imperfecto","Perfecto compuesto"];
-var S=[],NR=4;
+var T=["Presente","Perfecto simple","Imperfecto","Perfecto compuesto","Futuro simple"];
+var S=[],NR=5;
 S.push('<div class="hero"><h1>Los 50 verbos más usados en español</h1><p>Conjugación completa en presente y pasado. Fuente: Lingolia.</p></div><div class="grid">'
 +'<div class="c c0"><b>Presente</b><span>Hábitos y lo que pasa ahora</span></div>'
 +'<div class="c c1"><b>Perfecto simple</b><span>Acción terminada en el pasado (ayer llegué)</span></div>'
 +'<div class="c c2"><b>Imperfecto</b><span>Costumbre o descripción en el pasado</span></div>'
-+'<div class="c c3"><b>Perfecto compuesto</b><span>Pasado conectado con el presente (he llegado)</span></div></div>');
++'<div class="c c3"><b>Perfecto compuesto</b><span>Pasado conectado con el presente (he llegado)</span></div>'
++'<div class="c c4"><b>Futuro simple</b><span>Lo que pasará (hablaré)</span></div></div>');
 S.push('<h2>Índice</h2><div class="ix">'+L.map(function(v,k){return '<button onclick="go(0,'+(k+2+NR)+')">'+v+'<br><small style="color:var(--mut);font-size:11px">'+EN[k]+'</small></button>'}).join("")+'<button onclick="go(0,2)">Verbos regulares</button><button onclick="go(0,'+(52+NR)+')">Ejemplos</button></div>');
 function ET(cls,title,heads,cols){var rows=Q.map(function(q,i){return "<tr><td>"+q+"</td>"+cols.map(function(c){return '<td class="'+cls+'">'+c[i]+"</td>"}).join("")+"</tr>"}).join("");return '<div class="w" style="margin-top:14px"><table><tr><th class="'+cls+'">'+title+'</th>'+heads.map(function(h){return '<th class="'+cls+'">'+h+"</th>"}).join("")+'</tr>'+rows+'</table></div>'}
 var AUX=["he","has","ha","hemos","habéis","han"];
@@ -118,6 +120,12 @@ S.push('<h2>Terminaciones regulares<span class="en">(2/2)</span></h2>'
 +ET("t2","Imperfecto",["-ar","-er / -ir"],[["-aba","-abas","-aba","-ábamos","-abais","-aban"],["-ía","-ías","-ía","-íamos","-íais","-ían"]])
 +ET("t3","Perfecto compuesto",["hablar","comer","vivir"],[AUX.map(function(h){return h+" hablado"}),AUX.map(function(h){return h+" comido"}),AUX.map(function(h){return h+" vivido"})])
 +'<div class="lg">Participio regular: -ar → -ado · -er / -ir → -ido</div>');
+var ENF=["é","ás","á","emos","éis","án"];
+S.push('<h2>Futuro<span class="en">(future)</span></h2>'
++ET("t4","Futuro simple",["hablar","comer","vivir"],["hablar","comer","vivir"].map(function(v){return ENF.map(function(e){return v+e})}))
++'<div class="lg">Regla: infinitivo + -é, -ás, -á, -emos, -éis, -án (igual para -ar, -er e -ir)</div>'
++ET("t4","Ir a + infinitivo",["Ejemplo"],[["voy a hablar","vas a comer","va a vivir","vamos a hablar","vais a comer","van a vivir"]])
++'<div class="lg">Futuro simple irregular (cambia la raíz): tener → tendré · hacer → haré · decir → diré · poder → podré · poner → pondré · querer → querré · saber → sabré · salir → saldré · venir → vendré · haber → habrá</div>');
 var RG=[],IR=[];
 L.forEach(function(v,k){var g=gen(v,A[v]||{},false),r=gen(v,{},true),n=0;g.forEach(function(c,x){c.forEach(function(f,i){if(f!=r[x][i])n++})});(n?IR:RG).push(k)});
 function chips(a){return '<div class="ix">'+a.map(function(k){return '<button onclick="go(0,'+(k+2+NR)+')">'+L[k]+'</button>'}).join("")+'</div>'}
@@ -131,6 +139,7 @@ S.push('<h2>Ejemplos de los pasados</h2><div class="grid">'
 +'<div class="c c1"><b>Perfecto simple</b><span>Acción terminada, momento concreto</span><i>Ayer llegué tarde al trabajo.<br>El año pasado viajé a Perú.<br>Anoche cené y me acosté pronto.</i></div>'
 +'<div class="c c2"><b>Imperfecto</b><span>Costumbres y descripciones</span><i>Cuando era adolescente, escribía poemas.<br>De niño, jugaba al fútbol cada día.<br>Hacía calor y la gente caminaba.</i></div>'
 +'<div class="c c3"><b>Perfecto compuesto</b><span>Pasado que llega hasta el presente</span><i>¿Qué has comido hoy?<br>Esta semana he trabajado mucho.<br>Hemos pedido una pizza.</i></div>'
++'<div class="c c4"><b>Futuro</b><span>Lo que pasará</span><i>Mañana hablaré con ella.<br>La semana que viene voy a viajar.<br>En una hora saldré.</i></div>'
 +'<div class="c"><b>Comparación</b><span>El mismo verbo, tres pasados</span><i>Ayer comí paella.<br>Los domingos comía paella.<br>Hoy he comido paella.</i></div></div>');
 var st=document.getElementById("st"),n=document.getElementById("n"),i=0;
 st.innerHTML=S.map(function(s){return '<section class="slide">'+s+'</section>'}).join("");
